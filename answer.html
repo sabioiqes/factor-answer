@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>解答</title>
+
+<style>
+body{
+    font-family:sans-serif;
+    max-width:800px;
+    margin:auto;
+    padding:20px;
+}
+
+.answer{
+    font-size:32px;
+    line-height:1.8;
+}
+</style>
+</head>
+<body>
+
+<h1>解答</h1>
+
+<div id="answer" class="answer"></div>
+
+<script>
+
+function sign(n){
+    return n >= 0 ? "+" + n : n;
+}
+
+const params = new URLSearchParams(location.search);
+
+const raw = params.get("d");
+
+if(raw){
+
+    const nums = raw.split(",");
+
+    let html = "";
+
+    for(let i=0;i<nums.length;i+=2){
+
+        const a = Number(nums[i]);
+        const b = Number(nums[i+1]);
+
+        const no = i/2 + 1;
+
+        html += `(${no}) (x${sign(a)})(x${sign(b)})<br>`;
+    }
+
+    document.getElementById("answer").innerHTML = html;
+}
+
+</script>
+
+</body>
+</html>
